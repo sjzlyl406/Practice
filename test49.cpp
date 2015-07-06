@@ -18,28 +18,41 @@
 #include<algorithm>
 using namespace std;
 
+int cmp(int a, int b) 
+{
+	return a > b;
+}
+
+int Beauty(std::string str) 
+{
+	int map[26] = {0};
+	for(size_t i = 0; i < str.size(); ++i) {
+		map[tolower(str[i]) - 'a']++;
+	}
+	sort(map, map+26, cmp);
+	int result = 0;
+	for(int i = 0; i < 26; ++i) {
+		result += map[i] * (26-i);
+	}
+	return result;
+}
 
 int main(void)
 {
 	int N;
 	std::cin >> N;
 	std::string str;
-	std::vector<int> veccount;
-	for( int i = 0; i < N; ++i) {
-		std::cin >> str;
-		veccount.push_back(str.size());
-	}
-
-	sort(veccount.begin(), veccount.end());
-	std::vector<int>::iterator iter, i;
-	iter = unique(veccount.begin(), veccount.end());
-
-	int result = 0 , m = 26;
-	i = veccount.begin();
-	for(iter = iter-1; iter >= i; --iter) {
-		result += *iter * m--;
-	}
 	
-	std::cout  << result << std::endl;
+	int *array = new int[N];
+	for(int i = 0; i < N; ++i) {
+		std::cin >> str;
+		array[i] = Beauty(str);
+	}
+
+	for(int i = 0; i < N; ++i) {
+		std::cout << array[i] << '\t';
+	}
+
+	std::cout  << std::endl;
 	return 0;
 }
