@@ -16,6 +16,7 @@
 #include<algorithm>
 #include<string>
 
+/************** first: ***************/
 inline bool istOrT(const char c)
 {
 	return (c =='t' || c == 'T');
@@ -24,6 +25,17 @@ inline bool issOrS(const char c)
 {
 	return (c =='s' || c == 'S');
 }
+/************** second ****************/
+class isChar
+{
+	public:
+		isChar(char cc):c(cc){}
+		bool operator()(const char &c2) {
+			return (c2==c || c2==(c-'a'+'A'));
+		}
+	private:
+		char c;
+};
 
 int main(void)
 {
@@ -37,10 +49,9 @@ int main(void)
 	std::cin.get();
 
 	for(int i = 0; i < n; ++i) {
-		std::cout << i << ":" << n << std::endl;
 		getline(std::cin, str);
-		count1 += count_if(str.begin(), str.end(), istOrT);
-		count2 += count_if(str.begin(), str.end(), issOrS);
+		count1 += count_if(str.begin(), str.end(), isChar('t'));
+		count2 += count_if(str.begin(), str.end(), isChar('s'));
 	}
 
 	count1 > count2 ?
