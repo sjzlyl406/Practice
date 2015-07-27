@@ -50,7 +50,7 @@ int main(void)
 {
 	double x = 0.0;
 	cin >> x;
-	x = Cube(1.0, x);
+	x = Sqrt(1, x);
 	cout << x;
 	return 0;
 }
