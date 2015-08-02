@@ -10,6 +10,6 @@ for file in `ls | grep 'test'`
 do
 #	file=testi.c
 	echo "$file" >> a.txt
-	sed -n '8,/\s\*\s\*/p' $file >> a.txt
+	sed -n '8,/\s\*\s\*/p' $file >> index.txt
 	echo ' ' >> a.txt
 done
