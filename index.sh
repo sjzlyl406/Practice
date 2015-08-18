@@ -6,10 +6,16 @@
 #########################################################################
 #!/bin/bash
 
+Dir=index.txt
+if [ ! -s $Dir ] 
+then
+	echo > $Dir
+fi
+
 for file in `ls | grep 'test'`
 do
 #	file=testi.c
-	echo "$file" >> a.txt
-	sed -n '8,/\s\*\s\*/p' $file >> index.txt
-	echo ' ' >> a.txt
+	echo "$file" >> $Dir
+	sed -n '8,/\s\*\s\*/p' $file >> $Dir
+	echo ' ' >> $Dir
 done
