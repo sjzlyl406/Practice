@@ -234,5 +234,16 @@ int main(void)
 		printf("%d\t", array[i]);
 	}
 	printf("\n");
+	printf("---------------------常用算法-----------------------\n");
+	printf("排序方法 | 平均时间 | 最坏时间 | 空间复杂 | 稳定性  \n");
+	printf("冒泡排序 |  O(n^2)  |  O(n^2)  |   O(1)   |  稳定   \n");
+	printf("插入排序 |  O(n^2)  |  O(n^2)  |   O(1)   |  稳定   \n");
+	printf("希尔排序 | O(n^1.3) |  O(n^2)  |   O(1)   | 不稳定  \n");
+	printf("选择排序 |  O(n^2)  |  O(n^2)  |   O(1)   | 不稳定  \n");
+	printf("归并排序 |O(nlog(n))|O(nlog(n))|   O(1)   |  稳定   \n");
+	printf("快速排序 |O(nlog(n))|  O(n^2)  |   O(1)   | 不稳定  \n");
+	printf(" 堆排序  |O(nlog(n))|O(nlog(n))|   O(n)   | 不稳定  \n");
+	printf("基数排序 |O(d(r+n)) |O(d(n+rd))| O(d(r+n))|  稳定   \n");
+	printf("注：基数排序中，r代表关键字基数，d代表长度\n");
 	return 0;
 }
