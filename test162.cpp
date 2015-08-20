@@ -11,6 +11,7 @@
 #include<iostream>
 using namespace std;
 
+/*************** first ******************/
 
 /*
 struct ListNode {
@@ -39,5 +40,51 @@ public:
             stack1.pop();		stack2.pop();
         }
         return p1;
+    }
+};
+
+/*************** second **************/
+
+/*
+struct ListNode {
+    int val;
+    struct ListNode *next;
+    ListNode(int x) :
+            val(x), next(NULL) {
+    }
+};*/
+class Solution {
+public:
+    ListNode* FindFirstCommonNode( ListNode *pHead1, ListNode *pHead2) {
+        int len1(0), len2(0);
+        ListNode *cur_p = pHead1;
+        for ( ; cur_p != nullptr; cur_p = cur_p -> next) {
+            len1++;
+        }
+        for (cur_p = pHead2; cur_p != nullptr; cur_p = cur_p ->next) {
+            len2++;
+        }
+         
+        ListNode *short_p;
+        int gap;
+        if (len1 > len2) {
+            cur_p = pHead1;
+            short_p = pHead2;
+            gap = len1 - len2;
+        } else {
+            cur_p = pHead2;
+            short_p = pHead1;
+            gap = len2 - len1;
+        }
+         
+        for (int i = 0; i < gap; ++i) {
+            cur_p = cur_p -> next;
+        }
+        for ( ; cur_p != nullptr; cur_p = cur_p -> next, short_p = short_p -> next) {
+            if (cur_p == short_p) {
+                return cur_p;
+            }
+        }
+        return nullptr;
     }
 };
